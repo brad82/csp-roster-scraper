@@ -23,7 +23,7 @@ var endOfSeason = new Date(end);
 const summary = []
 do {
     const month = currentDate.getMonth();
-    if ( month > 5 && month < 10) {
+    if (month > 5 && month < 10) {
         console.warn(currentDate, 'Outside of Operating Season');
         currentDate.setDate(currentDate.getDate() + 1);
         continue;
@@ -32,7 +32,7 @@ do {
     const woid = await run(currentDate)
     const result = [currentDate.toISOString(), woid]
 
-    
+
     if (woid > -1) {
         console.log(currentDate, woid);
         summary.push(result);
@@ -41,6 +41,6 @@ do {
     }
 
     currentDate.setDate(currentDate.getDate() + 1);
-} while(currentDate < endOfSeason)
+} while (currentDate < endOfSeason)
 
 writeFileSync('./data/woids.json', JSON.stringify(summary))

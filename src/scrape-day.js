@@ -10,7 +10,7 @@ function calculateSeason(timestamp) {
 
     return [
         month > 6 ? year : year - 1,
-        month < 6 ? year : year + 1 
+        month < 6 ? year : year + 1
     ].join('/')
 }
 function parseSummaryTable($, row) {
@@ -52,7 +52,7 @@ async function run(woid) {
 
     const date = $('#patrolday > .detail .detail_row:first-of-type .details_display').text();
     const summaryTables = $('#patrolday > .detail > tbody > tr:not(.detail_row)');
-    
+
     const parts = []
     summaryTables.each((i, el) => {
         const table = parseSummaryTable($, el);
@@ -68,11 +68,11 @@ const input = readFileSync('./data/woids.json');
 const woids = JSON.parse(input.toString())
 const summary = [];
 
-for(var i = 0; i < woids.length; i++){
+for (var i = 0; i < woids.length; i++) {
     const [timestamp, woid] = woids[i];
     const results = await run(woid)
 
-    if(results.length === 0) {
+    if (results.length === 0) {
         continue;
     }
 
@@ -84,7 +84,7 @@ for(var i = 0; i < woids.length; i++){
             ...result
         }))
     )
-    
-} 
+
+}
 
 writeFileSync('./data/summary.json', JSON.stringify(summary))

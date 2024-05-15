@@ -5,7 +5,7 @@ const inputObject = JSON.parse(input.toString())
 
 const headers = [...inputObject.reduce((collector, current) => {
     const row = Object.keys(current)
-    if(row.length === 0) {
+    if (row.length === 0) {
         return collector
     }
 
@@ -27,11 +27,11 @@ const exclude = [
     'Rostered',
     'Min Required'
 ]
-for(var i = 0; i < inputObject.length; i++) {
+for (var i = 0; i < inputObject.length; i++) {
     const day = inputObject[i];
     const row = [];
 
-    for(var j = 0; j < headers.length; j++) {
+    for (var j = 0; j < headers.length; j++) {
         row.push((headers[j] in day) ? `"${day[headers[j]]}"` : '')
     }
 
